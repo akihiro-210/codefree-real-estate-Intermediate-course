@@ -1,0 +1,12 @@
+@use "sass:math";
+// 文字フォントの種類
+$base-font: "Zen Old Mincho", serif;
+$second-font: "EB Garamond",serif;
+$third-font: "Noto Serif JP", serif;;
+
+// 文字の太さ
+$regular: 300;
+$normal: 400;
+$medium: 500;
+$semibold: 600;
+$bold: 700;
