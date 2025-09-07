@@ -310,7 +310,7 @@ body.no-scroll {
 // about
 .about{
     height: 500px;
-    padding-block: 112px 98px;
+    padding-block: 113px 97px;
     background-image: url(../images/about_bg.jpg);
     background-size: cover;
     background-position: center;
@@ -490,7 +490,7 @@ body.no-scroll {
     font-size: 25px;
     font-weight: $semibold;
     line-height: calc(33/25);
-    @include mq("lg"){
+    @include mq("md"){
         font-size: 20px;
         line-height: calc(25/20);
     }
@@ -501,7 +501,7 @@ body.no-scroll {
     font-size: 16px;
     font-weight: $semibold;
     line-height: calc(25/16);
-    @include mq("lg"){
+    @include mq("md"){
         margin-top: 14px;
     }
 }
@@ -531,9 +531,12 @@ body.no-scroll {
     }
 }
 
+.works__item{
+    cursor: pointer;
+}
+
 .works__img-box{
     overflow: hidden;
-    cursor: pointer;
 }
 
 .works__img-box img{
@@ -541,11 +544,7 @@ body.no-scroll {
 }
 
 @media (hover: hover){
-    .works__item img:hover{
-        transform: scale(1.1);
-        transition: transform 0.3s;
-    }
-    .works__item:has(.works__text:hover) .works__img-box img {
+    .works__item:hover .works__img-box img{
         transform: scale(1.1);
         transition: transform 0.3s;
     }
@@ -688,7 +687,7 @@ body.no-scroll {
 }
 
 .news__text-main{
-    padding: 8px 20px 9px;
+    padding: 9px 20px 8px;
     background-color: $green;
     font-size: 20px;
     font-weight: $semibold;
@@ -829,17 +828,20 @@ body.no-scroll {
 }
 
 .company__content{
+    display: flex;
     position: relative;
-    height: 462px;
+    max-height: 462px;
+    justify-content: space-between;
     @include mq("md"){
-        display: flex;
+        max-height: 100%;
         flex-direction: column;
         height: auto;
-        row-gap: 14px;
     }
 }
 
 .company__content .content__img-box{
+    max-height: max-content;
+    aspect-ratio: 600/462;
     @include mq("md"){
         position: static;
         width: 100%;
@@ -852,12 +854,18 @@ body.no-scroll {
 
 .company__content .content__img-box iframe{
     width: 100%;
-    height: 100%;
+    height: auto;
+    aspect-ratio: 600/400;
+    @include mq("md"){
+        height: 100%;
+        aspect-ratio: 315/300;
+    }
 }
 
 .company__content .content__text-box{
-    padding: 49px 5px 42px calc(100% * 220/920);
+    padding: 49px 0 42px calc(100% * 220/920);
     @include mq("md"){
+        margin-top: 20px;
         padding: 19px 20px 12px;
         display: flex;
         flex-direction: column;
@@ -1393,9 +1401,21 @@ body.no-scroll {
     color: $black;
 }
 
+.bottom__nav-item:nth-child(4) .bottom__link{
+    display: inline-block;
+    margin-left: -0.5px;
+    @include mq("md"){
+        margin-top: 0.5px;
+    }
+}
+
+
 .bottom__nav-item:nth-child(5) .bottom__link{
     display: inline-block;
     margin-top: 2px;
+    @include mq("md"){
+        margin-top: 1px;
+    }
 }
 
 .bottom__icons{
@@ -1403,10 +1423,14 @@ body.no-scroll {
     margin-top: 26px;
     display: flex;
     column-gap: 30px;
+    @include mq("md"){
+        margin-top: 27px;
+    }
 }
 
 .bottom__icon{
     height: 28px;
+    width: 28px;
 }
 
 .bottom__icon-link{
@@ -1415,6 +1439,34 @@ body.no-scroll {
 
 .bottom__icon .fa-brands{
     font-size: 28px;
+}
+
+.fa-brands.fa-twitter{
+    margin-left: 1px;
+}
+
+.fa-brands.fa-facebook{
+    margin-left: 1px;
+    @include mq("md"){
+        margin-top: 1px;
+    }
+}
+
+.fa-brands.fa-youtube{
+    margin-left: -0.5px;
+    @include mq("md"){
+        margin-top: 1px;
+        margin-left: -1px;
+    }
+}
+
+.fa-brands.fa-instagram{
+    font-size: 32px;
+    margin-top: -2px;
+    margin-left: 1px;
+    @include mq("md"){
+        margin-top: -1px;
+    }
 }
 
 .return{
@@ -1438,7 +1490,7 @@ body.no-scroll {
 
 @media (hover:hover){
     .return:hover{
-        background-color: color-mix(in srgb, #4D9600 85%, white 15%);
+        background-color: #5ea61f;
         transition: background-color 0.3s;
     }
 }
@@ -1522,6 +1574,7 @@ body.no-scroll {
 }
 
 .section__title-en{
+    display: block;
     font-size: 30px;
     line-height: calc(33/30);
     letter-spacing: 0.3em;
@@ -1530,6 +1583,7 @@ body.no-scroll {
 }
 
 .section__title-ja{
+    display: block;
     margin-top: 6px;
     font-size: 20px;
     line-height: calc(33/20);

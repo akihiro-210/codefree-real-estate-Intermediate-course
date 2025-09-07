@@ -46,7 +46,7 @@ const swiper = new Swiper(".top__swiper", {
 
 
 //モーダル
-$(".works__img-box img , .works__text").click(function () {
+$(".works__item").click(function () {
   // クリック対象が img じゃない場合は、同じ .works__item 内の img を探す
   var $item = $(this).closest(".works__item");
   var $img = $item.find(".works__img-box img");
@@ -58,10 +58,14 @@ $(".works__img-box img , .works__text").click(function () {
   // ファイル名変換
   var modalSrc = src.replace("works_sp_image", "works_modal_image");
   $(".modal-block").fadeIn().css("display", "flex");
-  $("#popup").attr({
-    src: modalSrc,
+
+   // 画像とテキストを追加
+  var $modalImg = $('<img>', {
+    id: 'popup',
+    src: src,
     alt: alt
   });
+  $(".caption").before($modalImg);
   $(".caption").text(cap);
   $("body").addClass("no-scroll");
 });
@@ -70,6 +74,8 @@ $(".modal-block").click(function (e) {
   // モーダルの外側をクリックした場合にのみモーダルを閉じる
   if (e.target === this) {
     $(this).css("display", "none");
+    $(".modal-img-section img").remove();
+    $(".caption").text('');
     $("body").removeClass("no-scroll");
   }
 });
@@ -77,6 +83,8 @@ $(".modal-block").click(function (e) {
 $(".modal-close-button").click(function () {
   // モーダルを閉じるボタンがクリックされた場合にモーダルを閉じる
   $(".modal-block").css("display", "none");
+  $(".modal-img-section img").remove();
+  $(".caption").text('');
   $("body").removeClass("no-scroll");
 });
 
