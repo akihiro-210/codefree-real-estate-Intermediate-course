@@ -58,11 +58,10 @@ $(".works__item").click(function () {
   // ファイル名変換
   var modalSrc = src.replace("works_sp_image", "works_modal_image");
   $(".modal-block").fadeIn().css("display", "flex");
-
    // 画像とテキストを追加
   var $modalImg = $('<img>', {
     id: 'popup',
-    src: src,
+    src: modalSrc,
     alt: alt
   });
   $(".caption").before($modalImg);
