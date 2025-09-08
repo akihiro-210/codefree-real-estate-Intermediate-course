@@ -1361,6 +1361,12 @@ body.no-scroll {
   line-height: 1.65;
 }
 
+.form__field-radio .form__label-text,
+.form__field-select .form__label-text,
+.form__field-checkbox .form__label-text {
+  cursor: initial;
+}
+
 .form__field:nth-child(3) .form__label-text {
   letter-spacing: 0.02em;
 }
@@ -1518,6 +1524,8 @@ body.no-scroll {
           transform: translateY(-50%);
   background-color: #4D9600;
   clip-path: polygon(100% 0, 0 0, 50% 100%);
+  cursor: pointer;
+  pointer-events: none;
 }
 
 .form__field.form__field-textarea {

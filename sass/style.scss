@@ -1030,6 +1030,12 @@ body.no-scroll {
     line-height: calc(33/20);
 }
 
+.form__field-radio .form__label-text,
+.form__field-select .form__label-text,
+.form__field-checkbox .form__label-text{
+    cursor: initial;
+}
+
 .form__field:nth-child(3) .form__label-text{
     letter-spacing: 0.02em;
     @include mq("md"){
@@ -1151,6 +1157,8 @@ body.no-scroll {
     transform: translateY(-50%);
     background-color: $green;
     clip-path: polygon(100% 0, 0 0, 50% 100%);
+    cursor: pointer;
+    pointer-events: none;
 }
 
 // テキストエリア
