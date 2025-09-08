@@ -403,6 +403,12 @@ body.no-scroll {
   width: 100%;
   height: 100vh;
 }
+@media screen and (max-width: 768px) {
+  .top {
+    height: auto;
+    aspect-ratio: 375/601;
+  }
+}
 
 .top__inner {
   position: relative;
@@ -671,6 +677,11 @@ body.no-scroll {
   background-color: #4D9600;
   color: #fff;
 }
+@media screen and (max-width: 1024px) {
+  .content__text-box {
+    padding: 50px 0 42px 21.7391304348%;
+  }
+}
 @media screen and (max-width: 768px) {
   .content__text-box {
     margin-top: 6px;
@@ -685,11 +696,11 @@ body.no-scroll {
   position: absolute;
   bottom: 0;
   left: 0;
-  padding: 50px 23.9130434783% 42px 40px;
+  padding: 50px 23.9130434783% 42px 4.347826087%;
 }
 @media screen and (max-width: 1024px) {
   .content-reverse .content__text-box {
-    padding: 50px 20px 40px;
+    padding: 50px 21.7391304348% 42px 3.2608695652%;
   }
 }
 @media screen and (max-width: 768px) {
@@ -708,7 +719,7 @@ body.no-scroll {
   font-weight: 600;
   line-height: 1.32;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
   .content__text-main {
     font-size: 20px;
     line-height: 1.25;
@@ -946,6 +957,11 @@ body.no-scroll {
   line-height: 1.65;
   color: #fff;
 }
+@media screen and (max-width: 768px) {
+  .news__text-main {
+    padding: 8px 20px 9px;
+  }
+}
 
 .news__box-container {
   padding: 10px 20px 20px;
@@ -1162,6 +1178,11 @@ body.no-scroll {
 
 .company__content .content__text-box {
   padding: 49px 0 42px 23.9130434783%;
+}
+@media screen and (max-width: 1024px) {
+  .company__content .content__text-box {
+    padding: 50px 0 42px 21.7391304348%;
+  }
 }
 @media screen and (max-width: 768px) {
   .company__content .content__text-box {
@@ -1570,6 +1591,9 @@ body.no-scroll {
 .checkbox-item {
   display: inline-block;
   line-height: 1;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .checkbox-item:nth-child(4n-1),
