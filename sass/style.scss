@@ -1212,6 +1212,7 @@ body.no-scroll {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
     row-gap: 14px;
+    align-items: center;
     @include mq("md"){
         grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
         margin-top: 0;
@@ -1582,15 +1583,6 @@ body.no-scroll {
     max-width: 980px;
     padding-inline: 30px;
     margin-inline: auto;
-}
-
-.section-bg01{
-    background-image: url(/images/section-bg.jpg);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-color: rgba($color: $white, $alpha: 0.6);
-    background-blend-mode: lighten;
 }
 
 .section__title{
