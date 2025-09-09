@@ -968,6 +968,10 @@ body.no-scroll {
   background-color: #fff;
 }
 
+.news__items li {
+  border-bottom: 1px solid #55A500;
+}
+
 .news__item {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -976,7 +980,6 @@ body.no-scroll {
       -ms-flex-align: start;
           align-items: flex-start;
   padding-block: 20px 12px;
-  border-bottom: 1px solid #55A500;
 }
 
 .news__box-right li:first-child .news__item {
@@ -1480,7 +1483,7 @@ body.no-scroll {
 
 .radio-item__name::after {
   position: absolute;
-  top: 52%;
+  top: 51%;
   left: 7px;
   width: 6px;
   height: 6px;

@@ -710,11 +710,14 @@ body.no-scroll {
     background-color: $white;
 }
 
+.news__items li{
+    border-bottom: 1px solid $green02 ;
+}
+
 .news__item{
     display: flex;
     align-items: flex-start;
     padding-block: 20px 12px;
-    border-bottom: 1px solid $green02 ;
 }
 
 .news__box-right li:first-child .news__item{
@@ -1116,7 +1119,7 @@ body.no-scroll {
 
 .radio-item__name::after{
     position: absolute;
-    top: 52%;
+    top: 51%;
     left: 7px;
     width: 6px;
     height: 6px;
