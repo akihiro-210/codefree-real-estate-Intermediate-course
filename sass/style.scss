@@ -42,18 +42,20 @@ body.no-scroll {
 }
 
 .header__name{
-    display: flex;
-    margin-top: 11px;
-    @include mq("md"){
-        margin-top: 0;
-    }
+    height: inherit;
 }
 
 .header__name a{
     font-size: 20px;
     font-weight: $medium;
-    line-height: calc(33/20);
     color: $white;
+    display: flex;
+    align-items: center;
+    height: inherit;
+    // padding-top: 11px;
+    // @include mq("md"){
+    //     padding-top: 0;
+    // }
 }
 
 .header__nav{
@@ -74,20 +76,23 @@ body.no-scroll {
 .header__item:not(:first-child){
     margin-left: 31px;
     @include mq("lg"){
-        margin-left: 10px;
+        margin-left: 14px;
     }
 }
 
 .header__link{
     position: relative;
     height: inherit;
-    padding-top: 6px;
+    // padding-top: 6px;
     font-size: 18px;
     font-weight: $medium;
     line-height: calc(33/18);
     color: $white;
     display: flex;
     align-items: center;
+    @include mq("lg"){
+        font-size: 16px;
+    }
 }
 
 .header__link::after{
@@ -132,7 +137,7 @@ body.no-scroll {
     width: 32px;
     height: 24px;
     position: relative;
-    margin-top: 9px;
+    margin-top: 11px;
     margin-inline: auto;
 }
 
@@ -174,7 +179,6 @@ body.no-scroll {
 }
 
 .drawer-menu{
-    display: none;
     position: fixed;
     z-index: 5000;
     top: 0;
@@ -182,14 +186,28 @@ body.no-scroll {
     width: 100%;
     height: 100vh;
     background-color: transparent;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, background-color 0.3s;
+}
+
+.js-drawer.is-active.drawer-menu{
+    opacity: 1;
+    visibility: visible;
+    background-color: rgba(0,0,0,0.5);
 }
 
 .drawer-menu__wrap{
     position: absolute;
     top: 50px;
-    right: 0;
+    right: -50%;
     width: 300px;
     height: 348px;
+    transition: right 0.3s;
+}
+
+.js-drawer.is-active .drawer-menu__wrap{
+    right: 0;
 }
 
 .drawer-menu__inner{
@@ -238,9 +256,9 @@ body.no-scroll {
 // Top
 .top{
     width: 100%;
-    height: 100vh;
+    height: auto;
+    aspect-ratio: 1080/800;
     @include mq("md"){
-        height: auto;
         aspect-ratio: 375/601;
     }
 }
@@ -457,14 +475,14 @@ body.no-scroll {
     bottom: 0;
     right: 0;
     width: calc(100% * 500/920);
-    padding: 50px 0 42px calc(100% * 220/920);
+    padding: 50px 15px 42px calc(100% * 220/920);
     z-index: 1;
     max-width: 600px;
     overflow: hidden;
     background-color: $green;
     color: #fff;
     @include mq("lg"){
-        padding: 50px 0 42px calc(100% * 200/920);
+        padding: 50px 15px 42px calc(100% * 200/920);
     }
     @include mq("md"){
         margin-top: 6px;
@@ -673,11 +691,14 @@ body.no-scroll {
 .news__container{
     width: 100%;
     margin-top: 68px;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2,minmax(323px,1fr));
     column-gap: 60px;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: space-between;
+    row-gap: 40px;
     @include mq("md"){
+        grid-template-columns: 1fr;
         margin-top: 38px;
         flex-direction: column;
         align-items: center;
@@ -686,11 +707,8 @@ body.no-scroll {
 }
 
 .news__box{
-    width: calc(100% * 430/920);
+    width: 100%;
     position: relative;
-    @include mq("md"){
-        width: 100%;
-    }
 }
 
 .news__text-main{
@@ -733,11 +751,8 @@ body.no-scroll {
     line-height: 1;
     margin-top: 2px;
     width: 60px;
-    margin-right: 5px;
+    margin-right: 20px;
     color: $black;
-    @include mq("md"){
-        margin-right: 20px;
-    }
 }
 
 .news__box-right li .news__item-date{
@@ -777,13 +792,13 @@ body.no-scroll {
     display: block;
     position: relative;
     width: fit-content;
-    margin-top: 17px;
+    margin-top: 29px;
     margin-left: auto;
     padding-right: 33px;
-    padding-bottom: 4px;
+    padding-bottom: 15px;
     font-size: 20px;
     font-weight: $semibold;
-    line-height: calc(33/20);
+    line-height: 0.5;
     color: $green02;
 }
 
@@ -799,6 +814,10 @@ body.no-scroll {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.news__link-text{
+    pointer-events: none;
 }
 
 @media (hover:hover){
@@ -928,6 +947,14 @@ body.no-scroll {
     line-height: 1;
 }
 
+.tel__link{
+    color: $white;
+    pointer-events: none;
+    @include mq("md"){
+        pointer-events: auto;
+    }
+}
+
 .content__text-mail{
     display: inline-block;
     margin-top: 16px;
@@ -938,6 +965,12 @@ body.no-scroll {
     @include mq("md"){
         margin-top: 19px;
     }
+}
+
+.mail__link{
+    color: $white;
+    text-decoration: none;
+    -webkit-text-decoration: none;
 }
 
 
@@ -1139,11 +1172,16 @@ body.no-scroll {
     font-size: 18px;
     line-height: calc(25/18);
     padding: 12px 35px 13px 20px;
+    color: #000;
     @include mq("md"){
         font-size: 16px;
         line-height: calc(25/16);
         padding: 14px 35px 11px 20px;
     }
+}
+
+.form__select option{
+    color: #000;
 }
 
 .form__data-select {
@@ -1183,15 +1221,17 @@ body.no-scroll {
 }
 
 .form__textarea {
-    height: 200px;
+    min-height: 200px;
+    resize: vertical;
+    display: block;
 }
 
 // チェックボックス
 .form__field.form__field-checkbox{
-    margin-top: 44px;
+    margin-top: 50px;
     flex-direction: column;
     @include mq("md"){
-        margin-top: 24px;
+        margin-top: 30px;
     }
 }
 
@@ -1203,6 +1243,11 @@ body.no-scroll {
     @include mq("md"){
         line-height: calc(27/20);
     }
+}
+
+.form__field-checkbox .white-space{
+    margin-left: 1em;
+    white-space: nowrap;
 }
 
 .form__field-checkbox .form__data{
@@ -1501,7 +1546,7 @@ body.no-scroll {
     right: 60px;
     width: 68px;
     height: 68px;
-    border-radius: 50%;
+    clip-path: circle(50% at 50% 50%);
     overflow: hidden;
     z-index: 1000;
     background-color: $green;
@@ -1565,12 +1610,6 @@ body.no-scroll {
     color: $white;
     @include mq("md"){
         line-height: calc(25/20);
-    }
-}
-
-.copyright__space{
-    @include mq("md"){
-        margin-left: -20px;
     }
 }
 
@@ -1643,6 +1682,10 @@ body.no-scroll {
     @include mq("sp"){
         display: none;
     }
+}
+
+.display-none{
+    display: none;
 }
 
 

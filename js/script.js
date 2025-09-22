@@ -14,8 +14,9 @@ $(window).on("scroll", function () {
 // ハンバーガーメニュー
 $(".hamburger-wrap,.js-drawer,.drawer-menu__item a").click(function () {
     $(".js-hamburger").toggleClass("is-active");
-    $(".js-drawer").fadeToggle();
+    $(".js-drawer").toggleClass("is-active");
     $("body").toggleClass("no-scroll");
+    $(".js-page-top").toggleClass("display-none");
 });
 
 
@@ -66,25 +67,30 @@ $(".works__item").click(function () {
   });
   $(".caption").before($modalImg);
   $(".caption").text(cap);
+  $(".js-page-top").addClass("display-none");
   $("body").addClass("no-scroll");
 });
 
 $(".modal-block").click(function (e) {
   // モーダルの外側をクリックした場合にのみモーダルを閉じる
   if (e.target === this) {
-    $(this).css("display", "none");
-    $(".modal-img-section img").remove();
-    $(".caption").text('');
-    $("body").removeClass("no-scroll");
+    $(".modal-block").fadeOut(300, function () {
+      $(".modal-img-section img").remove();
+      $(".caption").text('');
+      $(".js-page-top").removeClass("display-none");
+      $("body").removeClass("no-scroll");
+    });
   }
 });
 
 $(".modal-close-button").click(function () {
   // モーダルを閉じるボタンがクリックされた場合にモーダルを閉じる
-  $(".modal-block").css("display", "none");
-  $(".modal-img-section img").remove();
-  $(".caption").text('');
-  $("body").removeClass("no-scroll");
+  $(".modal-block").fadeOut(300, function () {
+    $(".modal-img-section img").remove();
+    $(".caption").text('');
+    $(".js-page-top").removeClass("display-none");
+    $("body").removeClass("no-scroll");
+  });
 });
 
 
