@@ -495,18 +495,34 @@ body.no-scroll {
 }
 
 .about {
-  height: 500px;
-  padding-block: 113px 97px;
+  position: relative;
+  aspect-ratio: 1080/500;
+  background-size: contain;
   background-image: url(../images/about_bg.jpg);
-  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 @media screen and (max-width: 768px) {
   .about {
     background-image: url(../images/about_sp_bg.jpg);
-    padding-block: 53px 50px;
-    height: 584px;
+    aspect-ratio: 375/584;
+  }
+}
+
+.about__inner.inner {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(-57%, -49%);
+          transform: translate(-57%, -49%);
+  left: 40%;
+  padding-inline: 0;
+}
+@media screen and (max-width: 768px) {
+  .about__inner.inner {
+    top: 51%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -51%);
+            transform: translate(-50%, -51%);
   }
 }
 
@@ -521,10 +537,10 @@ body.no-scroll {
   -webkit-box-pack: left;
       -ms-flex-pack: left;
           justify-content: left;
-  margin-left: 55px;
 }
 @media screen and (max-width: 768px) {
   .about__text-body {
+    margin-top: 3px;
     margin-left: 0;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -536,6 +552,11 @@ body.no-scroll {
             align-items: center;
   }
 }
+@media screen and (max-width: 374px) {
+  .about__text-body {
+    row-gap: 18px;
+  }
+}
 
 .about__title {
   font-size: 30px;
@@ -543,19 +564,24 @@ body.no-scroll {
   -webkit-writing-mode: vertical-rl;
       -ms-writing-mode: tb-rl;
           writing-mode: vertical-rl;
-  line-height: 1.8;
+  line-height: 1.9;
   letter-spacing: 0.17em;
 }
 @media screen and (max-width: 768px) {
   .about__title {
     font-size: 25px;
-    line-height: 2.16;
+    line-height: 2.28;
     letter-spacing: 0.2em;
+  }
+}
+@media screen and (max-width: 374px) {
+  .about__title {
+    font-size: 22px;
   }
 }
 
 .about__text {
-  margin-right: 33px;
+  margin-right: 32px;
   font-size: 18px;
   font-weight: 500;
   line-height: 2.6666666667;
@@ -1735,7 +1761,7 @@ body.no-scroll {
   }
 }
 
-.form__acceptance-text {
+.form__acceptance-body {
   overflow-y: scroll;
   height: 280px;
   font-size: 18px;
@@ -1744,9 +1770,12 @@ body.no-scroll {
   padding-block: 30px;
   padding-right: 40px;
   background-color: #fff;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
 }
 @media screen and (max-width: 768px) {
-  .form__acceptance-text {
+  .form__acceptance-body {
+    -webkit-overflow-scrolling: touch;
     font-size: 16px;
     line-height: 2.0625;
     padding-block: 20px 7px;
@@ -1755,17 +1784,87 @@ body.no-scroll {
   }
 }
 
-.form__acceptance-text::-webkit-scrollbar {
+.form__acceptance-body::-webkit-scrollbar {
   width: 10px;
 }
 
-.form__acceptance-text::-webkit-scrollbar-track {
+.form__acceptance-body::-webkit-scrollbar-track {
   background-color: #E3E3E3;
 }
 
-.form__acceptance-text::-webkit-scrollbar-thumb {
+.form__acceptance-body::-webkit-scrollbar-thumb {
   background-color: #9B9B9B;
   height: 30px;
+}
+
+.form__acceptance-box:not(:first-child) {
+  margin-top: 31px;
+}
+@media screen and (max-width: 768px) {
+  .form__acceptance-box:not(:first-child) {
+    margin-top: 33px;
+  }
+}
+
+.form__acceptance-title {
+  font-size: 18px;
+  line-height: 1.7222222222;
+  font-weight: 500;
+}
+@media screen and (max-width: 768px) {
+  .form__acceptance-title {
+    font-size: 16px;
+    line-height: 2.0625;
+  }
+}
+
+.form__acceptance-list {
+  margin-top: 31px;
+}
+@media screen and (max-width: 768px) {
+  .form__acceptance-list {
+    margin-top: 33px;
+  }
+}
+
+.form__acceptance-box dl {
+  margin-top: 31px;
+}
+@media screen and (max-width: 768px) {
+  .form__acceptance-box dl {
+    margin-top: 33px;
+  }
+}
+
+.form__acceptance-box dt,
+.form__acceptance-box dd {
+  display: inline-block;
+}
+@media screen and (max-width: 440px) {
+  .form__acceptance-box dt,
+  .form__acceptance-box dd {
+    display: block;
+  }
+}
+
+.form__acceptance-box dd {
+  margin-left: 0.5em;
+}
+@media screen and (max-width: 440px) {
+  .form__acceptance-box dd {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .acceptance-sp-none {
+    display: none;
+  }
+}
+
+.form__acceptance-box .tel__link,
+.form__acceptance-box .mail__link {
+  color: #000;
 }
 
 .form__submit-button {

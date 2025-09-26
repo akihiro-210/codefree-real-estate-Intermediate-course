@@ -331,16 +331,33 @@ body.no-scroll {
 
 // about
 .about{
-    height: 500px;
-    padding-block: 113px 97px;
+    // height: 500px;
+    // padding-block: 113px 97px;
+    position: relative;
+    aspect-ratio: 1080/500;
+    background-size: contain;
     background-image: url(../images/about_bg.jpg);
-    background-size: cover;
+    // background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     @include mq("md"){
         background-image: url(../images/about_sp_bg.jpg);
-        padding-block: 53px 50px;
-        height: 584px;
+        // padding-block: 53px 50px;
+        // height: 584px;
+        aspect-ratio: 375/584;
+    }
+}
+
+.about__inner.inner{
+    position: absolute;
+    top: 50%;
+    transform: translate(-57%,-49%);
+    left: 40%;
+    padding-inline: 0;
+    @include mq("md"){
+        top: 51%;
+        left: 50%;
+        transform: translate(-50%,-51%);
     }
 }
 
@@ -348,12 +365,16 @@ body.no-scroll {
     display: flex;
     flex-direction: row-reverse;
     justify-content: left;
-    margin-left: 55px;
+    // margin-left: 55px;
     @include mq("md"){
+        margin-top: 3px;
         margin-left: 0;
         flex-direction: column;
         row-gap: 23px;
         align-items: center;
+    }
+    @media screen and (max-width:374px){
+        row-gap: 18px;
     }
 }
 
@@ -361,17 +382,20 @@ body.no-scroll {
     font-size: 30px;
     font-weight: $medium;
     writing-mode: vertical-rl;
-    line-height: calc(54/30);
+    line-height: calc(57/30);
     letter-spacing: 0.17em;
     @include mq("md"){
         font-size: 25px;
-        line-height: calc(54/25);
+        line-height: calc(57/25);
         letter-spacing: 0.2em;
+    }
+    @media screen and (max-width:374px){
+        font-size: 22px;
     }
 }
 
 .about__text{
-    margin-right: 33px;
+    margin-right: 32px;
     font-size: 18px;
     font-weight: $medium;
     line-height: calc(48/18);
@@ -1344,7 +1368,7 @@ body.no-scroll {
     }
 }
 
-.form__acceptance-text{
+.form__acceptance-body{
     overflow-y: scroll;
     height: 280px;
     font-size: 18px;
@@ -1353,7 +1377,10 @@ body.no-scroll {
     padding-block: 30px;
     padding-right: 40px;
     background-color: $white;
+    overflow-y: auto;
+    scrollbar-gutter: stable;
     @include mq("md"){
+        -webkit-overflow-scrolling: touch;
         font-size: 16px;
         line-height: calc(33/16);
         padding-block: 20px 7px;
@@ -1362,17 +1389,74 @@ body.no-scroll {
     }
 }
 
-.form__acceptance-text::-webkit-scrollbar{
+.form__acceptance-body::-webkit-scrollbar{
     width: 10px;
 }
 
-.form__acceptance-text::-webkit-scrollbar-track {
+.form__acceptance-body::-webkit-scrollbar-track {
     background-color: #E3E3E3;
 }
 
-.form__acceptance-text::-webkit-scrollbar-thumb {
+.form__acceptance-body::-webkit-scrollbar-thumb {
     background-color: #9B9B9B;
     height: 30px;
+}
+
+.form__acceptance-box:not(:first-child){
+    margin-top: 31px;
+    @include mq("md"){
+        margin-top: 33px;
+    }
+}
+
+.form__acceptance-title{
+    font-size: 18px;
+    line-height: calc(31/18);
+    font-weight: $medium;
+    @include mq("md"){
+        font-size: 16px;
+        line-height: calc(33/16);
+    }
+}
+
+.form__acceptance-list{
+    margin-top: 31px;
+    @include mq("md"){
+        margin-top: 33px;
+    }
+}
+
+.form__acceptance-box dl{
+    margin-top: 31px;
+    @include mq("md"){
+        margin-top: 33px;
+    }
+}
+
+.form__acceptance-box dt,
+.form__acceptance-box dd{
+    display: inline-block;
+    @media screen and (max-width:440px) {
+        display: block;
+    }
+}
+
+.form__acceptance-box dd{
+    margin-left: 0.5em;
+    @media screen and (max-width:440px) {
+        margin-left: 0;
+    }
+}
+
+.acceptance-sp-none{
+    @media screen and (max-width:440px) {
+        display: none;
+    }
+}
+
+.form__acceptance-box .tel__link,
+.form__acceptance-box .mail__link{
+    color: $black;
 }
 
 .form__submit-button {
