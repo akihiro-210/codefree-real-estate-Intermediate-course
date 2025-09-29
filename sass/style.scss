@@ -1377,10 +1377,9 @@ body.no-scroll {
     padding-block: 30px;
     padding-right: 40px;
     background-color: $white;
-    overflow-y: auto;
     scrollbar-gutter: stable;
+    -webkit-overflow-scrolling: touch;
     @include mq("md"){
-        -webkit-overflow-scrolling: touch;
         font-size: 16px;
         line-height: calc(33/16);
         padding-block: 20px 7px;
@@ -1398,6 +1397,16 @@ body.no-scroll {
 }
 
 .form__acceptance-body::-webkit-scrollbar-thumb {
+    background-color: #9B9B9B;
+    height: 30px;
+}
+
+/* iPhone用（SimpleBar適用時の見た目をPCと揃える） */
+.simplebar-track.simplebar-vertical {
+    background: #E3E3E3;
+    width: 10px ;
+}
+.simplebar-scrollbar::before {
     background-color: #9B9B9B;
     height: 30px;
 }
