@@ -142,20 +142,20 @@ $(window).on("load", function () {
   fadeAnime();
 });
 
+});
+
 // iOS判定関数
 function isiOS() {
   return /iPhone|iPad|iPod/i.test(navigator.userAgent);
 }
 
+// DOM準備完了後に iPhone だけ SimpleBar 適用
 document.addEventListener("DOMContentLoaded", function () {
   if (isiOS()) {
     document.querySelectorAll('.form__acceptance-body').forEach(el => {
-      // iPhone の場合のみ SimpleBar を適用
       new SimpleBar(el, {
-        autoHide: false // スクロールバーを常時表示
+        autoHide: false  // 常時表示
       });
     });
   }
-});
-
 });
