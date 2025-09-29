@@ -1874,10 +1874,12 @@ body.no-scroll {
 }
 
 .form__acceptance-box dl {
+  display: block;
   margin-top: 31px;
 }
 @media screen and (max-width: 768px) {
   .form__acceptance-box dl {
+    display: block;
     margin-top: 33px;
   }
 }
@@ -1893,12 +1895,28 @@ body.no-scroll {
   }
 }
 
+.form__acceptance-box dt {
+  white-space: nowrap;
+}
+
 .form__acceptance-box dd {
   margin-left: 0.5em;
+  width: calc(100% - 2.5em);
+  word-wrap: break-word;
 }
 @media screen and (max-width: 440px) {
   .form__acceptance-box dd {
+    width: 100%;
     margin-left: 0;
+  }
+}
+
+.form__acceptance-box dd:last-child {
+  width: calc(100% - 7.5em);
+}
+@media screen and (max-width: 440px) {
+  .form__acceptance-box dd:last-child {
+    width: 100%;
   }
 }
 
