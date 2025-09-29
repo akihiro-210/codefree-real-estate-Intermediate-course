@@ -1750,6 +1750,7 @@ body.no-scroll {
 }
 
 .form__acceptance {
+  width: 100%;
   background-color: #fff;
   margin-top: 10px;
   padding: 10px 10px 10px 40px;
@@ -1797,14 +1798,39 @@ body.no-scroll {
 }
 
 /* iPhone用（SimpleBar適用時の見た目をPCと揃える） */
+/* SimpleBar 適用時 */
+.simplebar-wrapper,
+.simplebar-mask,
+.simplebar-offset,
+.simplebar-content-wrapper,
+.simplebar-content,
+.simplebar-height-auto-observer-wrapper,
+.simplebar-height-auto-observer {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.simplebar-content {
+  padding-right: 30px;
+  padding-block: 20px 7px;
+}
+
+/* スクロールバー */
 .simplebar-track.simplebar-vertical {
   background: #E3E3E3;
   width: 10px;
+  border-radius: 0;
 }
 
+/* スクロールバー（つまみ部分） */
 .simplebar-scrollbar::before {
   background-color: #9B9B9B;
   height: 30px;
+  border-radius: 0;
+  width: 100%;
+  top: 0;
+  left: 0;
 }
 
 .form__acceptance-box:not(:first-child) {
