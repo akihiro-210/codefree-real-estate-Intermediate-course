@@ -499,14 +499,14 @@ body.no-scroll {
     bottom: 0;
     right: 0;
     width: calc(100% * 500/920);
-    padding: 50px 15px 42px calc(100% * 220/920);
+    padding: 50px 8px 42px calc(100% * 220/920);
     z-index: 1;
     max-width: 600px;
     overflow: hidden;
     background-color: $green;
     color: #fff;
     @include mq("lg"){
-        padding: 50px 15px 42px calc(100% * 200/920);
+        padding: 50px 8px 42px calc(100% * 200/920);
     }
     @include mq("md"){
         margin-top: 6px;
