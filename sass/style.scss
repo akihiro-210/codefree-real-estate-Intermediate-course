@@ -1383,7 +1383,6 @@ body.no-scroll {
     padding-block: 30px;
     padding-right: 40px;
     background-color: $white;
-    scrollbar-gutter: stable;
     -webkit-overflow-scrolling: touch;
     @include mq("md"){
         font-size: 16px;
