@@ -26,7 +26,6 @@ body.no-scroll {
 
 .header.headerColorScroll{
     background-color: $green;
-    transition: background-color 0.3s;
 }
 
 .header__inner{
@@ -52,10 +51,6 @@ body.no-scroll {
     display: flex;
     align-items: center;
     height: inherit;
-    // padding-top: 11px;
-    // @include mq("md"){
-    //     padding-top: 0;
-    // }
 }
 
 .header__nav{
@@ -83,7 +78,6 @@ body.no-scroll {
 .header__link{
     position: relative;
     height: inherit;
-    // padding-top: 6px;
     font-size: 18px;
     font-weight: $medium;
     line-height: calc(33/18);
@@ -92,6 +86,7 @@ body.no-scroll {
     align-items: center;
     @include mq("lg"){
         font-size: 16px;
+        padding-top: 2px;
     }
 }
 
@@ -114,7 +109,6 @@ body.no-scroll {
     }
     .header__link:hover::after{
         opacity: 1;
-        transition: opacity 0.3s;
     }
 }
 
@@ -223,28 +217,21 @@ body.no-scroll {
     flex-direction: column;
 }
 
-.drawer-menu__item{
-    background-color: $green;
-    transition: background-color 0.3s;
-}
-
 .drawer-menu__link{
+    background-color: $green;
     display: block;
     padding: 12.5px 0 12.5px 20px;
     font-size: 18px;
     font-weight: $semibold;
     line-height: calc(33/18);
     color: $white;
+    transition: background-color 0.3s;
 }
 
 @media (hover: hover){
-    .drawer-menu__item:hover{
-        background-color: $black;
-        transition: background-color 0.3s;
-        opacity: 1;
-    }
     .drawer-menu__link:hover{
         opacity: 1;
+        background-color: $black;
     }
 
 }
@@ -555,6 +542,21 @@ body.no-scroll {
     }
 }
 
+.content__text-sub span {
+    display: block;
+    @media screen and (max-width: 950px) {
+        display: inline;
+    }
+    @include mq("sp"){
+        display: block;
+    }
+    @media screen and (max-width: 370px) {
+        display: inline;
+    }
+}
+
+
+
 
 
 
@@ -595,7 +597,6 @@ body.no-scroll {
 @media (hover: hover){
     .works__item:hover .works__img-box img{
         transform: scale(1.1);
-        transition: transform 0.3s;
     }
 }
 
@@ -828,7 +829,6 @@ body.no-scroll {
     padding-right: 33px;
     padding-bottom: 15px;
     position: relative;
-    transition: transform .5s;
 }
 
 .news-link::after{
@@ -1275,7 +1275,6 @@ body.no-scroll {
 }
 
 .form__field-checkbox .white-space{
-    margin-left: 1em;
     white-space: nowrap;
 }
 
@@ -1458,60 +1457,18 @@ body.no-scroll {
     }
 }
 
-.form__acceptance-list{
+.form__acceptance-box:nth-child(3) .form__acceptance-list{
     margin-top: 31px;
     @include mq("md"){
         margin-top: 33px;
     }
 }
 
-.form__acceptance-box dl{
-    display: block;
+.form__acceptance-contact{
     margin-top: 31px;
     @include mq("md"){
-        display: block;
         margin-top: 33px;
     }
-}
-
-.form__acceptance-box dt,
-.form__acceptance-box dd{
-    display: inline-block;
-    @media screen and (max-width:440px) {
-        display: block;
-    }
-}
-
-.form__acceptance-box dt{
-    white-space: nowrap;
-}
-
-.form__acceptance-box dd{
-    margin-left: 0.5em;
-    width: calc(100% - 2.5em);
-    word-wrap: break-word;
-    @media screen and (max-width:440px) {
-        width: 100%;
-        margin-left: 0;
-    }
-}
-
-.form__acceptance-box dd:last-child{
-    width: calc(100% - 7.5em);
-    @media screen and (max-width:440px) {
-        width: 100%;
-    }
-}
-
-.acceptance-sp-none{
-    @media screen and (max-width:440px) {
-        display: none;
-    }
-}
-
-.form__acceptance-box .tel__link,
-.form__acceptance-box .mail__link{
-    color: $black;
 }
 
 .form__submit-button {
@@ -1544,7 +1501,6 @@ body.no-scroll {
 @media (hover: hover){
     .form__submit-input:hover{
         background-color: $white;
-        transition: background-color 0.3s, color 0.3s;
         color: $green;
     }
 }
@@ -1645,6 +1601,7 @@ body.no-scroll {
 
 .bottom__icon-link{
     color: $black;
+    display: block;
 }
 
 .bottom__icon .fa-brands{
@@ -1701,7 +1658,6 @@ body.no-scroll {
 @media (hover:hover){
     .return:hover{
         background-color: #5ea61f;
-        transition: background-color 0.3s;
     }
 }
 

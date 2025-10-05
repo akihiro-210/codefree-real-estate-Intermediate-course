@@ -162,8 +162,6 @@ body.no-scroll {
 
 .header.headerColorScroll {
   background-color: #4D9600;
-  -webkit-transition: background-color 0.3s;
-  transition: background-color 0.3s;
 }
 
 .header__inner {
@@ -244,6 +242,7 @@ body.no-scroll {
 @media screen and (max-width: 1024px) {
   .header__link {
     font-size: 16px;
+    padding-top: 2px;
   }
 }
 
@@ -267,8 +266,6 @@ body.no-scroll {
   }
   .header__link:hover::after {
     opacity: 1;
-    -webkit-transition: opacity 0.3s;
-    transition: opacity 0.3s;
   }
 }
 .hamburger-wrap {
@@ -390,30 +387,22 @@ body.no-scroll {
           flex-direction: column;
 }
 
-.drawer-menu__item {
-  background-color: #4D9600;
-  -webkit-transition: background-color 0.3s;
-  transition: background-color 0.3s;
-}
-
 .drawer-menu__link {
+  background-color: #4D9600;
   display: block;
   padding: 12.5px 0 12.5px 20px;
   font-size: 18px;
   font-weight: 600;
   line-height: 1.8333333333;
   color: #fff;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
 }
 
 @media (hover: hover) {
-  .drawer-menu__item:hover {
-    background-color: #000;
-    -webkit-transition: background-color 0.3s;
-    transition: background-color 0.3s;
-    opacity: 1;
-  }
   .drawer-menu__link:hover {
     opacity: 1;
+    background-color: #000;
   }
 }
 .top {
@@ -781,6 +770,25 @@ body.no-scroll {
   }
 }
 
+.content__text-sub span {
+  display: block;
+}
+@media screen and (max-width: 950px) {
+  .content__text-sub span {
+    display: inline;
+  }
+}
+@media screen and (max-width: 375px) {
+  .content__text-sub span {
+    display: block;
+  }
+}
+@media screen and (max-width: 370px) {
+  .content__text-sub span {
+    display: inline;
+  }
+}
+
 .works {
   padding-block: 80px 97px;
 }
@@ -826,10 +834,6 @@ body.no-scroll {
   .works__item:hover .works__img-box img {
     -webkit-transform: scale(1.1);
             transform: scale(1.1);
-    -webkit-transition: -webkit-transform 0.3s;
-    transition: -webkit-transform 0.3s;
-    transition: transform 0.3s;
-    transition: transform 0.3s, -webkit-transform 0.3s;
   }
 }
 .works__text {
@@ -1099,10 +1103,6 @@ body.no-scroll {
   padding-right: 33px;
   padding-bottom: 15px;
   position: relative;
-  -webkit-transition: -webkit-transform 0.5s;
-  transition: -webkit-transform 0.5s;
-  transition: transform 0.5s;
-  transition: transform 0.5s, -webkit-transform 0.5s;
 }
 
 .news-link::after {
@@ -1652,7 +1652,6 @@ body.no-scroll {
 }
 
 .form__field-checkbox .white-space {
-  margin-left: 1em;
   white-space: nowrap;
 }
 
@@ -1863,71 +1862,22 @@ body.no-scroll {
   }
 }
 
-.form__acceptance-list {
+.form__acceptance-box:nth-child(3) .form__acceptance-list {
   margin-top: 31px;
 }
 @media screen and (max-width: 768px) {
-  .form__acceptance-list {
+  .form__acceptance-box:nth-child(3) .form__acceptance-list {
     margin-top: 33px;
   }
 }
 
-.form__acceptance-box dl {
-  display: block;
+.form__acceptance-contact {
   margin-top: 31px;
 }
 @media screen and (max-width: 768px) {
-  .form__acceptance-box dl {
-    display: block;
+  .form__acceptance-contact {
     margin-top: 33px;
   }
-}
-
-.form__acceptance-box dt,
-.form__acceptance-box dd {
-  display: inline-block;
-}
-@media screen and (max-width: 440px) {
-  .form__acceptance-box dt,
-  .form__acceptance-box dd {
-    display: block;
-  }
-}
-
-.form__acceptance-box dt {
-  white-space: nowrap;
-}
-
-.form__acceptance-box dd {
-  margin-left: 0.5em;
-  width: calc(100% - 2.5em);
-  word-wrap: break-word;
-}
-@media screen and (max-width: 440px) {
-  .form__acceptance-box dd {
-    width: 100%;
-    margin-left: 0;
-  }
-}
-
-.form__acceptance-box dd:last-child {
-  width: calc(100% - 7.5em);
-}
-@media screen and (max-width: 440px) {
-  .form__acceptance-box dd:last-child {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 440px) {
-  .acceptance-sp-none {
-    display: none;
-  }
-}
-
-.form__acceptance-box .tel__link,
-.form__acceptance-box .mail__link {
-  color: #000;
 }
 
 .form__submit-button {
@@ -1967,8 +1917,6 @@ body.no-scroll {
 @media (hover: hover) {
   .form__submit-input:hover {
     background-color: #fff;
-    -webkit-transition: background-color 0.3s, color 0.3s;
-    transition: background-color 0.3s, color 0.3s;
     color: #4D9600;
   }
 }
@@ -2089,6 +2037,7 @@ body.no-scroll {
 
 .bottom__icon-link {
   color: #000;
+  display: block;
 }
 
 .bottom__icon .fa-brands {
@@ -2154,8 +2103,6 @@ body.no-scroll {
 @media (hover: hover) {
   .return:hover {
     background-color: #5ea61f;
-    -webkit-transition: background-color 0.3s;
-    transition: background-color 0.3s;
   }
 }
 .return__button {
