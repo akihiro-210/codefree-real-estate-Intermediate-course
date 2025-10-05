@@ -1,9 +1,10 @@
 $(function () {});
 
-// ヘッダーメニュースクロール時の色変更
+// ヘッダーメニュースクロール時の色変更（aboutセクション上部が画面上端に到達時）
 $(window).on("scroll", function () {
-  const sliderHeight = $(".top").height();
-  if (sliderHeight - 60 < $(this).scrollTop()) {
+  const aboutTop = $(".about").offset().top;
+  const scroll = $(this).scrollTop();
+  if (scroll >= aboutTop) {
     $(".js-header").addClass("headerColorScroll");
   } else {
     $(".js-header").removeClass("headerColorScroll");
@@ -51,7 +52,6 @@ $(".works__item").click(function () {
   // クリック対象が img じゃない場合は、同じ .works__item 内の img を探す
   var $item = $(this).closest(".works__item");
   var $img = $item.find(".works__img-box img");
-
   var src = $img.attr("src");
   var alt = $img.attr("alt");
   // <br> を無視してテキストだけ取得（1行になる）
