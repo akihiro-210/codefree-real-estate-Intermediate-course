@@ -198,6 +198,11 @@ body.no-scroll {
           align-items: center;
   height: inherit;
 }
+@media screen and (max-width: 768px) {
+  .header__name a {
+    padding-top: 2px;
+  }
+}
 
 .header__nav {
   height: inherit;
@@ -746,7 +751,6 @@ body.no-scroll {
 
 .content__text-main {
   display: inline-block;
-  width: 275px;
   font-size: 25px;
   font-weight: 600;
   line-height: 1.32;
@@ -756,6 +760,10 @@ body.no-scroll {
     font-size: 20px;
     line-height: 1.25;
   }
+}
+
+.content__text-main .white-space {
+  white-space: nowrap;
 }
 
 .content__text-sub {
