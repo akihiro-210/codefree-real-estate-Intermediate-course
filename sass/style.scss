@@ -51,6 +51,9 @@ body.no-scroll {
     display: flex;
     align-items: center;
     height: inherit;
+    @include mq("md"){
+        padding-top: 2px;
+    }
 }
 
 .header__nav{
@@ -522,7 +525,6 @@ body.no-scroll {
 
 .content__text-main{
     display: inline-block;
-    width: 275px;
     font-size: 25px;
     font-weight: $semibold;
     line-height: calc(33/25);
@@ -530,6 +532,10 @@ body.no-scroll {
         font-size: 20px;
         line-height: calc(25/20);
     }
+}
+
+.content__text-main .white-space{
+    white-space: nowrap;
 }
 
 .content__text-sub{
