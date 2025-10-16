@@ -1114,6 +1114,15 @@ body.no-scroll {
   }
 }
 
+.news__box-left .news__item-title {
+  margin-left: 1px;
+}
+@media screen and (max-width: 767px) {
+  .news__box-left .news__item-title {
+    margin-left: 0;
+  }
+}
+
 .news-link__box {
   margin-top: 29px;
   display: -webkit-box;
