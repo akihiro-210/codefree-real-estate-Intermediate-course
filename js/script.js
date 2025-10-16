@@ -143,13 +143,19 @@ $(function () {
 
     if (isDrawerOpen || isModalOpen) {
       // ドロワー or モーダル開いてるときは常に非表示
-      pageTop.stop(true, true).fadeOut(300);
+      pageTop.stop(true,true).fadeOut(300);
     } else {
       // 通常時のみスクロール量で制御
       if (scroll > 100) {
-        pageTop.stop(true, true).fadeIn(300);
+      // まだ表示されていなければ fadeIn
+        if (!pageTop.is(":visible")) {
+          pageTop.stop(true).fadeIn(300);
+        }
       } else {
-        pageTop.stop(true, true).fadeOut(300);
+        // すでに非表示でなければ fadeOut
+        if (pageTop.is(":visible")) {
+          pageTop.stop(true).fadeOut(300);
+        }
       }
     }
   }
