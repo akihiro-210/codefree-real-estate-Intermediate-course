@@ -1540,7 +1540,7 @@ body.no-scroll {
 .bottom{
     padding-block: 80px;
     @include mq("md"){
-        padding-block: 50px 51px;
+        padding-block: 50px 50px;
     }
 }
 
@@ -1621,7 +1621,7 @@ body.no-scroll {
     margin-top: 26px;
     column-gap: 30px;
     @include mq("md"){
-        margin-top: 27px;
+        margin-top: 28px;
     }
 }
 
