@@ -104,7 +104,7 @@ $(".works__item").click(function () {
   });
   $(".caption").before($modalImg);
   $(".caption").text(cap);
-  $(".js-page-top").addClass("display-none");
+  $(".js-page-top").stop(true, true).fadeOut(300); // モーダル開いたら非表示
   $("body").addClass("no-scroll");
 });
 
@@ -114,7 +114,7 @@ $(".modal-block").click(function (e) {
     $(".modal-block").fadeOut(300, function () {
       $(".modal-img-section img").remove();
       $(".caption").text('');
-      $(".js-page-top").removeClass("display-none");
+      $(".js-page-top").stop(true, true).fadeIn(300); // モーダル閉じたら表示
       $("body").removeClass("no-scroll");
     });
   }
@@ -125,7 +125,7 @@ $(".modal-close-button").click(function () {
   $(".modal-block").fadeOut(300, function () {
     $(".modal-img-section img").remove();
     $(".caption").text('');
-    $(".js-page-top").removeClass("display-none");
+    $(".js-page-top").stop(true, true).fadeIn(300); // モーダル閉じたら非表示
     $("body").removeClass("no-scroll");
   });
 });
@@ -135,32 +135,36 @@ $(".modal-close-button").click(function () {
 $(function () {
   const pageTop = $(".js-page-top");
   pageTop.hide();
-  $(window).scroll(function () {
-    // ハンバーガー開いている場合はスクロールに関係なく非表示
-    if ($(".js-drawer").hasClass("is-active")) return;
-    if ($(this).scrollTop() > 100) {
-      pageTop.fadeIn();
+
+  function togglePageTop() {
+    const scroll = $(window).scrollTop();
+    const isDrawerOpen = $(".js-drawer").hasClass("is-active");
+    const isModalOpen = $(".modal-block").is(":visible");
+
+    if (isDrawerOpen || isModalOpen) {
+      // ドロワー or モーダル開いてるときは常に非表示
+      pageTop.stop(true, true).fadeOut(300);
     } else {
-      pageTop.fadeOut();
+      // 通常時のみスクロール量で制御
+      if (scroll > 100) {
+        pageTop.stop(true, true).fadeIn(300);
+      } else {
+        pageTop.stop(true, true).fadeOut(300);
+      }
     }
-  });
+  }
+
+  // スクロール・リサイズ時どちらでもチェック
+  $(window).on("scroll resize", togglePageTop);
+
+  // ページトップボタンクリックで戻る
   pageTop.click(function () {
-    $("body, html").animate(
-      { scrollTop: 0,},500);
+    $("html, body").animate({ scrollTop: 0 }, 500);
     return false;
   });
-  // ウィンドウリサイズ時にメニュー開閉状態をチェック
-  $(window).on("resize", function() {
-      if ($(".js-drawer").hasClass("is-active")) {
-          pageTop.hide();
-      } else {
-          if ($(window).scrollTop() > 100) {
-              pageTop.show();
-          } else {
-              pageTop.hide();
-          }
-      }
-  });
+
+  // 初期チェック
+  togglePageTop();
 });
 
 
