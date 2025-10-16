@@ -185,7 +185,7 @@ body.no-scroll {
     background-color: transparent;
     opacity: 0;
     visibility: hidden;
-    transition: visibility 1s,opacity 0.3s, background-color 1s;
+    transition: visibility 0.3s,opacity 0.3s, background-color 0.3s;
 }
 
 .js-drawer.is-active.drawer-menu{

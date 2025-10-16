@@ -17,12 +17,25 @@ $(".hamburger-wrap,.js-drawer,.drawer-menu__item a").click(function () {
     $(".js-hamburger").toggleClass("is-active");
     $(".js-drawer").toggleClass("is-active");
     $("body").toggleClass("no-scroll");
-    $(".js-page-top").toggleClass("display-none");
+     // ハンバーガー開いている場合はトップへ戻るボタンを非表示
+    if ($(".js-drawer").hasClass("is-active")) {
+        $(".js-page-top").stop(true,true).fadeOut(300);
+    }
 });
 
 // サイト内移動
 let headerHeight = $('.js-header').outerHeight();
 const header = document.querySelector('.js-header');
+
+// ページ読み込み後に再取得（CSS適用後）
+$(window).on('load', function() {
+  headerHeight = $('.js-header').outerHeight();
+});
+
+// ウィンドウリサイズ時も再取得
+$(window).on('resize', function() {
+  headerHeight = $('.js-header').outerHeight();
+});
 
 // ヘッダーの高さ変化を監視
 if (header) {
@@ -36,7 +49,7 @@ if (header) {
 $('a[href^="#"]').on('click', function(e) {
   e.preventDefault();
   var id = $(this).attr('href');
-  var position = $(id).offset().top - headerHeight + 1;
+  var position = $(id).offset().top - headerHeight;
 
   $('html,body').animate({ scrollTop: position }, 500);
   $("#hamburger").removeClass("is-active");
@@ -123,6 +136,8 @@ $(function () {
   const pageTop = $(".js-page-top");
   pageTop.hide();
   $(window).scroll(function () {
+    // ハンバーガー開いている場合はスクロールに関係なく非表示
+    if ($(".js-drawer").hasClass("is-active")) return;
     if ($(this).scrollTop() > 100) {
       pageTop.fadeIn();
     } else {
@@ -131,12 +146,20 @@ $(function () {
   });
   pageTop.click(function () {
     $("body, html").animate(
-      {
-        scrollTop: 0,
-      },
-      500
-    );
+      { scrollTop: 0,},500);
     return false;
+  });
+  // ウィンドウリサイズ時にメニュー開閉状態をチェック
+  $(window).on("resize", function() {
+      if ($(".js-drawer").hasClass("is-active")) {
+          pageTop.hide();
+      } else {
+          if ($(window).scrollTop() > 100) {
+              pageTop.show();
+          } else {
+              pageTop.hide();
+          }
+      }
   });
 });
 
