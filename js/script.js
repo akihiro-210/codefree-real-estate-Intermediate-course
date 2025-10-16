@@ -20,18 +20,42 @@ $(".hamburger-wrap,.js-drawer,.drawer-menu__item a").click(function () {
     $(".js-page-top").toggleClass("display-none");
 });
 
-
 // サイト内移動
-var headerHeight = $('.js-header').outerHeight();
-$('a[href^="#"]').click(function(){
+let headerHeight = $('.js-header').outerHeight();
+const header = document.querySelector('.js-header');
+
+// ヘッダーの高さ変化を監視
+if (header) {
+  const resizeObserver = new ResizeObserver(() => {
+    headerHeight = $('.js-header').outerHeight();
+    // console.log('headerHeight 更新:', headerHeight);
+  });
+  resizeObserver.observe(header);
+}
+
+$('a[href^="#"]').on('click', function(e) {
+  e.preventDefault();
   var id = $(this).attr('href');
   var position = $(id).offset().top - headerHeight + 1;
-  $('html,body').animate({ scrollTop: position}, 500);
+
+  $('html,body').animate({ scrollTop: position }, 500);
   $("#hamburger").removeClass("is-active");
   $("#drawer").removeClass("is-active");
   $("body").removeClass("no-scroll");
   return false;
 });
+
+// サイト内移動
+// var headerHeight = $('.js-header').outerHeight();
+// $('a[href^="#"]').click(function(){
+//   var id = $(this).attr('href');
+//   var position = $(id).offset().top - headerHeight + 1;
+//   $('html,body').animate({ scrollTop: position}, 500);
+//   $("#hamburger").removeClass("is-active");
+//   $("#drawer").removeClass("is-active");
+//   $("body").removeClass("no-scroll");
+//   return false;
+// });
 
 
 // メインスライダー
