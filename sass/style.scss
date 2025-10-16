@@ -144,7 +144,7 @@ body.no-scroll {
     width: 100%;
     display: inline-block;
     height: 4px;
-    transition: 1s transform , 1s opacity;
+    transition: 0.3s transform , 0.3s opacity;
     border-radius: 2px;
     background-color: $green;
 }
@@ -185,7 +185,7 @@ body.no-scroll {
     background-color: transparent;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s, background-color 0.3s;
+    transition: visibility 1s,opacity 0.3s, background-color 1s;
 }
 
 .js-drawer.is-active.drawer-menu{
@@ -257,7 +257,6 @@ body.no-scroll {
     position: relative;
     width: 100%;
     height: inherit;
-    overflow: hidden;
 }
 
 .top__inner::after {
@@ -272,7 +271,6 @@ body.no-scroll {
 }
 
 .top__swiper,
-.swiper-slide picture,
 .swiper-slide img{
     height: inherit;
     width: 100%;
@@ -284,18 +282,16 @@ body.no-scroll {
 
 .top__title-wrap{
     position: absolute;
-    top: calc(100% * 340/800);
-    // left: 51%;
-    left: 55.6%;
-    // transform: translateX(-51%);
-    transform: translateX(-55%);
+    top: 52%;
+    left: 50%;
+    transform: translate( -50%, -54%);
     width: 100%;
     z-index: 500;
+    padding-left: 12px;
     @include mq("md"){
         top: 51%;
-        left: 51%;
-        transform: translate(-50%,-49%);
-        margin-left: 1px;
+        transform: translate( -50%, -49%);
+        padding-left: 10px;
     }
 }
 
@@ -321,19 +317,14 @@ body.no-scroll {
 
 // about
 .about{
-    // height: 500px;
-    // padding-block: 113px 97px;
     position: relative;
     aspect-ratio: 1080/500;
     background-size: contain;
     background-image: url(../images/about_bg.jpg);
-    // background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     @include mq("md"){
         background-image: url(../images/about_sp_bg.jpg);
-        // padding-block: 53px 50px;
-        // height: 584px;
         aspect-ratio: 375/584;
     }
 }
@@ -355,7 +346,6 @@ body.no-scroll {
     display: flex;
     flex-direction: row-reverse;
     justify-content: left;
-    // margin-left: 55px;
     @include mq("md"){
         margin-top: 3px;
         margin-left: 0;
@@ -374,7 +364,7 @@ body.no-scroll {
     writing-mode: vertical-rl;
     line-height: calc(57/30);
     letter-spacing: 0.17em;
-    @include mq("md"){
+    @include mq("lg"){
         font-size: 25px;
         line-height: calc(57/25);
         letter-spacing: 0.2em;
@@ -391,11 +381,18 @@ body.no-scroll {
     line-height: calc(48/18);
     letter-spacing: 0.39em;
     writing-mode: vertical-rl;
+    @include mq("lg"){
+        margin-right: 20px;
+        font-size: 16px;
+        line-height: calc(35/16);
+        letter-spacing: 0.25em;
+    }
     @include mq("md"){
         margin-right: 0;
-        font-size: 16px;
         line-height: calc(26/16);
-        letter-spacing: 0.25em;
+    }
+    @media screen and (max-width:374px){
+        font-size: 14px;
     }
 }
 
@@ -723,11 +720,14 @@ body.no-scroll {
     width: 100%;
     margin-top: 68px;
     display: grid;
-    grid-template-columns: repeat(2,minmax(323px,1fr));
+    grid-template-columns: repeat(2,minmax(320px,1fr));
     column-gap: 60px;
     align-items: flex-start;
     justify-content: space-between;
     row-gap: 40px;
+    @media screen and (max-width:900px){
+        column-gap: 30px;
+    }
     @include mq("md"){
         grid-template-columns: 1fr;
         margin-top: 38px;
@@ -782,8 +782,11 @@ body.no-scroll {
     line-height: 1;
     margin-top: 2px;
     width: 60px;
-    margin-right: 20px;
+    margin-right: calc(100% *61/390);
     color: $black;
+    @include mq("md"){
+        margin-right: calc(100% * 12/275);
+    }
 }
 
 .news__box-right li .news__item-date{
@@ -801,12 +804,12 @@ body.no-scroll {
 }
 
 .news__item-title{
+    flex: 1;
     font-size: 18px;
     font-weight: $medium;
     line-height: calc(25/18);
     color: $black;
     margin-left: auto;
-    max-width: 268px;
     line-break: strict;
     display: -webkit-box;
     text-overflow: ellipsis;
@@ -1135,16 +1138,21 @@ body.no-scroll {
 
 .form__input::placeholder {
     color: #A0A0A0;
+    font-size: 16px;
 }
 
 .form__input,
 .form__select,
 .form__textarea{
-    font-size: 16px;
-    line-height: calc(25/16);
+    font-size: 18px;
+    line-height: calc(25/18);
     width: 100%;
     padding: 13px 20px 12px;
     background-color: $white;
+    @include mq("md"){
+        font-size: 16px;
+        line-height: calc(25/16);
+    }
 }
 
 // ラジオボックス
@@ -1256,9 +1264,15 @@ body.no-scroll {
 }
 
 .form__textarea {
+    font-size: 18px;
     min-height: 200px;
     resize: vertical;
     display: block;
+    line-height: calc(31/18);
+    @include mq("md"){
+        font-size: 16px;
+        line-height: calc(31/16);
+    }
 }
 
 // チェックボックス
@@ -1560,6 +1574,9 @@ body.no-scroll {
     row-gap: 5px;
     text-align: center;
     justify-content: center;
+    @media screen and (max-width:900px){
+        column-gap: 40px;
+    }
     @include mq("md"){
         margin-top: 19px;
         column-gap: 31px;
@@ -1591,55 +1608,20 @@ body.no-scroll {
 }
 
 .bottom__icons{
-    justify-content: center;
-    margin-top: 26px;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 26px;
     column-gap: 30px;
     @include mq("md"){
         margin-top: 27px;
     }
 }
 
-.bottom__icon{
-    height: 28px;
-    width: 28px;
-}
-
 .bottom__icon-link{
     color: $black;
     display: block;
-}
-
-.bottom__icon .fa-brands{
-    font-size: 28px;
-}
-
-.fa-brands.fa-twitter{
-    margin-left: 1px;
-}
-
-.fa-brands.fa-facebook{
-    margin-left: 1px;
-    @include mq("md"){
-        margin-top: 1px;
-    }
-}
-
-.fa-brands.fa-youtube{
-    margin-left: -0.5px;
-    @include mq("md"){
-        margin-top: 1px;
-        margin-left: -1px;
-    }
-}
-
-.fa-brands.fa-instagram{
-    font-size: 32px;
-    margin-top: -2px;
-    margin-left: 1px;
-    @include mq("md"){
-        margin-top: -1px;
-    }
+    width: 28px;
 }
 
 .return{
