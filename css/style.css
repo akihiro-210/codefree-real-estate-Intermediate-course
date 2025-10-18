@@ -1336,15 +1336,6 @@ body.no-scroll {
   max-width: 860px;
 }
 
-.contact__inner .section__title-ja {
-  margin-left: -9px;
-}
-@media screen and (max-width: 767px) {
-  .contact__inner .section__title-ja {
-    margin-left: -8px;
-  }
-}
-
 .contact__text {
   margin-left: 1px;
   margin-top: 35px;
