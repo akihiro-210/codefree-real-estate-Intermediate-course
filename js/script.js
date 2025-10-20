@@ -1,21 +1,44 @@
 $(function () {});
 
-// ドロワー、モーダル時のスクロール固定
+// ============================
+// スクロール固定用変数と関数
+// ============================
 let scrollPosition = 0;
-// スクロール固定関数
+
 function lockScroll() {
   scrollPosition = $(window).scrollTop();
-  $("body")
-    .addClass("no-scroll")
-    .css({
-      position: "fixed",
-      top: `-${scrollPosition}px`,
-      width: "100%"
-    });
+  // bodyを固定して位置を保持
+  $("body").css({
+    position: "fixed",
+    top: `-${scrollPosition}px`,
+    left: 0,
+    width: "100%",
+  });
+  // iOS Safari 対策で html に overflow:hidden を付与
+  $("html").css({
+    overflow: "hidden",
+    height: "100%",
+    touchAction: "none",
+    "-webkit-overflow-scrolling": "auto", // iOS慣性スクロール防止
+  });
+  $("body, html").addClass("no-scroll");
 }
-// スクロール解除関数
+
 function unlockScroll() {
-  $("body").removeClass("no-scroll").attr("style", "");
+  $("body").css({
+    position: "",
+    top: "",
+    left: "",
+    width: "",
+  });
+  $("html").css({
+    overflow: "",
+    height: "",
+    touchAction: "",
+    "-webkit-overflow-scrolling": "",
+  });
+  $("body, html").removeClass("no-scroll");
+  // 固定前の位置に戻す
   $(window).scrollTop(scrollPosition);
 }
 
@@ -38,7 +61,6 @@ $(window).on("scroll", function () {
 $(".hamburger-wrap,.js-drawer,.drawer-menu__item a").click(function () {
     $(".js-hamburger").toggleClass("is-active");
     $(".js-drawer").toggleClass("is-active");
-    $("body").toggleClass("no-scroll");
      // ハンバーガー開いている場合はトップへ戻るボタンを非表示、スクロール固定。閉じたら閉じたらスクロール固定解除
     if ($(".js-drawer").hasClass("is-active")) {
         $(".js-page-top").stop(true,true).fadeOut(300);

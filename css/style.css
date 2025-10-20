@@ -139,8 +139,13 @@ select::-ms-expand {
   display: none;
 }
 
+html.no-scroll,
 body.no-scroll {
   overflow: hidden;
+  height: 100%;
+  -ms-touch-action: none;
+      touch-action: none; /* スワイプ防止 */
+  -webkit-overflow-scrolling: auto; /* 慣性スクロール防止 */
 }
 
 .header {

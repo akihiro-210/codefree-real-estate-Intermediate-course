@@ -2,10 +2,13 @@
 @use "./base/reset";
 @use "./global" as *;
 
+html.no-scroll,
 body.no-scroll {
     overflow: hidden;
+    height: 100%;
+    touch-action: none; /* スワイプ防止 */
+    -webkit-overflow-scrolling: auto; /* 慣性スクロール防止 */
 }
-
 
 
 
