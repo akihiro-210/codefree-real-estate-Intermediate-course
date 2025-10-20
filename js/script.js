@@ -142,7 +142,7 @@ $(".works__item").click(function () {
   $(".caption").before($modalImg);
   $(".caption").text(cap);
   $(".js-page-top").stop(true, true).fadeOut(300); // モーダル開いたら非表示
-  $("body").addClass("no-scroll");
+  lockScroll();
 });
 
 $(".modal-block").click(function (e) {
@@ -152,7 +152,7 @@ $(".modal-block").click(function (e) {
       $(".modal-img-section img").remove();
       $(".caption").text('');
       $(".js-page-top").stop(true, true).fadeIn(300); // モーダル閉じたら表示
-      $("body").removeClass("no-scroll");
+      unlockScroll();
     });
   }
 });
@@ -163,7 +163,7 @@ $(".modal-close-button").click(function () {
     $(".modal-img-section img").remove();
     $(".caption").text('');
     $(".js-page-top").stop(true, true).fadeIn(300); // モーダル閉じたら非表示
-    $("body").removeClass("no-scroll");
+    unlockScroll();
   });
 });
 
