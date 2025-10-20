@@ -1,5 +1,26 @@
 $(function () {});
 
+// ドロワー、モーダル時のスクロール固定
+let scrollPosition = 0;
+// スクロール固定関数
+function lockScroll() {
+  scrollPosition = $(window).scrollTop();
+  $("body")
+    .addClass("no-scroll")
+    .css({
+      position: "fixed",
+      top: `-${scrollPosition}px`,
+      width: "100%"
+    });
+}
+// スクロール解除関数
+function unlockScroll() {
+  $("body").removeClass("no-scroll").attr("style", "");
+  $(window).scrollTop(scrollPosition);
+}
+
+
+
 // ヘッダーメニュースクロール時の色変更（aboutセクション上部が画面上端に到達時）
 $(window).on("scroll", function () {
   const aboutTop = $(".about").offset().top;
@@ -12,14 +33,18 @@ $(window).on("scroll", function () {
 });
 
 
+
 // ハンバーガーメニュー
 $(".hamburger-wrap,.js-drawer,.drawer-menu__item a").click(function () {
     $(".js-hamburger").toggleClass("is-active");
     $(".js-drawer").toggleClass("is-active");
     $("body").toggleClass("no-scroll");
-     // ハンバーガー開いている場合はトップへ戻るボタンを非表示
+     // ハンバーガー開いている場合はトップへ戻るボタンを非表示、スクロール固定。閉じたら閉じたらスクロール固定解除
     if ($(".js-drawer").hasClass("is-active")) {
         $(".js-page-top").stop(true,true).fadeOut(300);
+        lockScroll();
+    } else {
+        unlockScroll();
     }
 });
 
@@ -71,6 +96,7 @@ $('a[href^="#"]').on('click', function(e) {
 // });
 
 
+
 // メインスライダー
 const swiper = new Swiper(".top__swiper", {
   loop: true,
@@ -82,6 +108,7 @@ const swiper = new Swiper(".top__swiper", {
     delay: 3000,
   },
 });
+
 
 
 //モーダル
@@ -131,6 +158,7 @@ $(".modal-close-button").click(function () {
 });
 
 
+
 // トップ戻るボタン
 $(function () {
   const pageTop = $(".js-page-top");
@@ -172,6 +200,7 @@ $(function () {
   // 初期チェック
   togglePageTop();
 });
+
 
 
 // スクロールしたらふわっと出てくるアニメーション
