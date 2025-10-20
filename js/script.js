@@ -7,38 +7,26 @@ let scrollPosition = 0;
 
 function lockScroll() {
   scrollPosition = $(window).scrollTop();
-  // bodyを固定して位置を保持
-  $("body").css({
+
+  $("html").css({
     position: "fixed",
     top: `-${scrollPosition}px`,
-    left: 0,
     width: "100%",
-  });
-  // iOS Safari 対策で html に overflow:hidden を付与
-  $("html").css({
     overflow: "hidden",
-    height: "100%",
-    touchAction: "none",
-    "-webkit-overflow-scrolling": "auto", // iOS慣性スクロール防止
   });
-  $("body, html").addClass("no-scroll");
+
+  $("body").addClass("no-scroll");
 }
 
 function unlockScroll() {
-  $("body").css({
+  $("html").css({
     position: "",
     top: "",
-    left: "",
     width: "",
-  });
-  $("html").css({
     overflow: "",
-    height: "",
-    touchAction: "",
-    "-webkit-overflow-scrolling": "",
   });
-  $("body, html").removeClass("no-scroll");
-  // 固定前の位置に戻す
+
+  $("body").removeClass("no-scroll");
   $(window).scrollTop(scrollPosition);
 }
 
